@@ -14,6 +14,11 @@
 <ion-content padding>
   <h2>Create Account</h2>
   <ion-input
+    [(ngModel)]="createName"
+    type="text"
+    placeholder="name"
+  ></ion-input>
+  <ion-input
     [(ngModel)]="createEmail"
     type="text"
     placeholder="email"
@@ -22,6 +27,11 @@
     [(ngModel)]="createPassword"
     type="password"
     placeholder="password"
+  ></ion-input>
+  <ion-input
+    [(ngModel)]="createConfirmPassword"
+    type="password"
+    placeholder="confirm password"
   ></ion-input>
   <ion-button (click)="createAccount()" color="primary"
   >Test Create Account</ion-button

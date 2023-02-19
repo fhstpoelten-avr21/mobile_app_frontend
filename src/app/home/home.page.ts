@@ -34,6 +34,7 @@ export class HomePage {
       password: this.createPassword,
       confirm: this.createConfirmPassword
     }
+    console.log('register', credentials)
     this.http.post('http://localhost:3000/user/register', credentials).subscribe((res) => {
       console.log(res);
     });
@@ -52,6 +53,7 @@ export class HomePage {
     });
   }
   testRoute(){
+    console.log('protected', this.jwt)
     let headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.jwt)
     this.http.get('http://localhost:3000/user', {headers: headers}).subscribe((res) => {
       console.log(res);
@@ -59,6 +61,7 @@ export class HomePage {
   }
   logout(){
     this.jwt = null;
+    console.log('jwt', this.jwt)
   }
 
   // submitForm(value: { title: string, completed: false }): void {
