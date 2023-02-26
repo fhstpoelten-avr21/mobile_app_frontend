@@ -5,7 +5,7 @@
 # Ionic Frontend
 
 ## Description
-A simple Ionic App with JWT Authentication
+A simple Ionic App with JWT Authentication, using RxJs Observable Pattern
 
 
 ## Tech Stack
@@ -15,10 +15,6 @@ A simple Ionic App with JWT Authentication
 | [Angular](https://angular.io/docs)                                 | 15      | Frontend Web Development Framework             |
 | [Yarn](https://yarnpkg.com/)                                       | 1.22    | Package manager                                |
 | [Capacitor](https://capacitorjs.com/)                              | 4.1.1   | Cross Device support                           |
-| [MariaDB](https://mariadb.org/)                                    | latest  | Open Source relational storage, based on MySQL |
-| [TypeORM](https://docs.nestjs.com/recipes/sql-typeorm#sql-typeorm) | 8.0.2   | for SQL object modelling                       |
-| [Swagger](https://docs.nestjs.com/openapi/introduction)            | 5.2.1   | for API documentation                          |
-| [Docker](https://www.docker.com/)                                  | latest  | for building a local virtual environment       |
 
 
 ## Run

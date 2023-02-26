@@ -5,7 +5,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
-import { MessageComponentModule } from '../message/message.module';
 import {TodoComponentModule} from "../todo/todo.module";
 
 @NgModule({
@@ -14,7 +13,6 @@ import {TodoComponentModule} from "../todo/todo.module";
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    MessageComponentModule,
     HomePageRoutingModule,
     TodoComponentModule
   ],

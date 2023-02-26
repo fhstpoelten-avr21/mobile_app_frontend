@@ -12,7 +12,7 @@ export interface Todo {
   providedIn: "root",
 })
 export class TodoService {
-  private resourceUrl = "http://localhost:8000/todos";
+  private resourceUrl = "http://localhost:3000/todos";
 
   constructor() {}
 

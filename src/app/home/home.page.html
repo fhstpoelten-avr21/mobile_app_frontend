@@ -6,91 +6,43 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-header>
-  <ion-toolbar>
-    <ion-title> Mobile App </ion-title>
-  </ion-toolbar>
-</ion-header>
-<ion-content padding>
-  <h2>Create Account</h2>
-  <ion-input
-    [(ngModel)]="createName"
-    type="text"
-    placeholder="name"
-  ></ion-input>
-  <ion-input
-    [(ngModel)]="createEmail"
-    type="text"
-    placeholder="email"
-  ></ion-input>
-  <ion-input
-    [(ngModel)]="createPassword"
-    type="password"
-    placeholder="password"
-  ></ion-input>
-  <ion-input
-    [(ngModel)]="createConfirmPassword"
-    type="password"
-    placeholder="confirm password"
-  ></ion-input>
-  <ion-button (click)="createAccount()" color="primary"
-  >Test Create Account</ion-button
-  >
-  <h2>Sign In</h2>
-  <ion-input
-    [(ngModel)]="signInEmail"
-    type="text"
-    placeholder="email"
-  ></ion-input>
-  <ion-input
-    [(ngModel)]="signInPassword"
-    type="password"
-    placeholder="password"
-  ></ion-input>
-  <ion-button (click)="signIn()" color="primary">Test Sign In</ion-button>
-  <ion-button (click)="testRoute()" color="light"
-  >Test Protected Route</ion-button
-  >
-  <ion-button (click)="logout()" color="light">Test Logout</ion-button>
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">
+        ToDo List
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid class="ion-grid">
+    <form
+      [formGroup]="validateForm"
+      (ngSubmit)="submitForm(validateForm.value)">
+      <ion-row>
+        <ion-col size="9">
+          <ion-input
+            placeholder="Enter Todo"
+            formControlName="title">
+          </ion-input>
+        </ion-col>
+        <ion-col size="3">
+          <ion-button type="submit" color="primary">Add</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-grid>
+
+  <ion-list>
+    <app-todo
+      *ngFor="let todo of todos$"
+      [todo]="todo"
+      [delete]="this.delete"
+      [update]="this.update">
+    </app-todo>
+  </ion-list>
 </ion-content>
-
-<!--<ion-content [fullscreen]="true">-->
-<!--  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">-->
-<!--    <ion-refresher-content></ion-refresher-content>-->
-<!--  </ion-refresher>-->
-
-<!--  <ion-header collapse="condense">-->
-<!--    <ion-toolbar>-->
-<!--      <ion-title size="large">-->
-<!--        ToDo List-->
-<!--      </ion-title>-->
-<!--    </ion-toolbar>-->
-<!--  </ion-header>-->
-
-<!--  <ion-grid class="ion-grid">-->
-<!--    <form-->
-<!--      [formGroup]="validateForm"-->
-<!--      (ngSubmit)="submitForm(validateForm.value)">-->
-<!--      <ion-row>-->
-<!--        <ion-col size="9">-->
-<!--          <ion-input-->
-<!--            placeholder="Enter Todo"-->
-<!--            formControlName="title">-->
-<!--          </ion-input>-->
-<!--        </ion-col>-->
-<!--        <ion-col size="3">-->
-<!--          <ion-button type="submit" color="primary">Add</ion-button>-->
-<!--        </ion-col>-->
-<!--      </ion-row>-->
-<!--    </form>-->
-<!--  </ion-grid>-->
-
-<!--  <ion-list>-->
-<!--    <app-todo-->
-<!--      *ngFor="let todo of todos$"-->
-<!--      [todo]="todo"-->
-<!--      [delete]="this.delete"-->
-<!--      [update]="this.update">-->
-<!--    </app-todo>-->
-<!--  </ion-list>-->
-<!--</ion-content>-->

@@ -1,19 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ViewMessagePage } from './view-message.page';
+import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ViewMessagePageRoutingModule } from './view-message-routing.module';
+import { AuthPage } from './auth.page';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: AuthPage
+  }
+];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ViewMessagePageRoutingModule
+    RouterModule.forChild(routes)
   ],
-  declarations: [ViewMessagePage]
+  declarations: [AuthPage]
 })
-export class ViewMessagePageModule {}
+export class AuthPageModule {}
