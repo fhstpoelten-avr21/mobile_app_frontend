@@ -7,7 +7,6 @@ export class User {
   ) {}
 
   get token() {
-    console.log('usermodel token', this)
     if (!this.tokenExpirationDate || this.tokenExpirationDate <= new Date()) {
       return null;
     }

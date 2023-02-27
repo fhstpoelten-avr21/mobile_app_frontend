@@ -24,7 +24,6 @@ export class AuthService implements OnDestroy {
   constructor(private http: HttpClient) {}
 
   get userIsAuthenticated() {
-    console.log('check authentication')
     let result = this._user.asObservable().pipe(
       map(user => {
         if (user) {
@@ -35,7 +34,6 @@ export class AuthService implements OnDestroy {
       })
     );
 
-    console.log('userIsAuthenticated', result)
     return result
   }
 
@@ -64,7 +62,6 @@ export class AuthService implements OnDestroy {
   }
 
   autoLogin() {
-    console.log('autoLogin 1')
     let result = from(Preferences.get({key: 'authData'})).pipe(
       map(storedData => {
         // @ts-ignore
@@ -101,7 +98,6 @@ export class AuthService implements OnDestroy {
       })
     );
 
-    console.log('autoLogin 2', result)
     return result;
   }
 
@@ -121,7 +117,6 @@ export class AuthService implements OnDestroy {
       )
       .pipe(tap(this.setUserData.bind(this)));
 
-    console.log('loginResult', result)
     return result
   }
 
@@ -140,7 +135,6 @@ export class AuthService implements OnDestroy {
   }
 
   private autoLogout(duration: number) {
-    console.log('autoLogin')
     if (this.activeLogoutTimer) {
       clearTimeout(this.activeLogoutTimer);
     }
@@ -164,7 +158,7 @@ export class AuthService implements OnDestroy {
     this.storeAuthData(
       userData.id,
       userData.token,
-      expirationTime.toISOString(),
+      expirationTime.toTimeString(),
       userData.email
     );
   }

@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Platform } from '@ionic/angular';
-import {Preferences} from '@capacitor/preferences';
-import { Plugins, Capacitor } from '@capacitor/core';
+import { App } from '@capacitor/app';
+import { Capacitor } from '@capacitor/core';
+import { SplashScreen } from '@capacitor/splash-screen';
 
 import { AuthService } from './auth/auth.service';
 import {take} from 'rxjs/operators';
@@ -26,11 +27,11 @@ export class AppComponent {
   }
 
   initializeApp() {
-    // this.platform.ready().then(() => {
-    //   if (Capacitor.isPluginAvailable('SplashScreen')) {
-    //     Plugins['SplashScreen']['hide']();
-    //   }
-    // });
+    this.platform.ready().then(() => {
+      if (Capacitor.isPluginAvailable('SplashScreen')) {
+        SplashScreen.hide();
+      }
+    });
   }
 
   ngOnInit() {
@@ -40,10 +41,7 @@ export class AppComponent {
       }
       this.previousAuthState = isAuth;
     });
-    Plugins['App']['addListener'](
-      'appStateChange',
-      this.checkAuthOnResume.bind(this)
-    );
+    App.addListener('appStateChange', this.checkAuthOnResume.bind(this));
   }
 
   onLogout() {
@@ -54,6 +52,7 @@ export class AppComponent {
     if (this.authSub) {
       this.authSub.unsubscribe();
     }
+    App.removeAllListeners();
     // Plugins.App.removeListener('appStateChange', this.checkAuthOnResume);
   }
 

@@ -38,7 +38,6 @@ export class AuthPage implements OnInit {
         }
         authObserver.subscribe(
           response => {
-            console.log('authenticate - response', response);
             this.isLoading = false;
             loadingEl.dismiss();
             this.router.navigateByUrl('/home');

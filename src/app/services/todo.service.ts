@@ -1,11 +1,15 @@
 import {Injectable} from "@angular/core";
 import {Http, HttpResponse} from "@capacitor-community/http";
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../auth/auth.service';
+import { take, tap, delay, switchMap, map } from 'rxjs/operators';
 //import {HttpResponse} from "@angular/common/http";
 
 export interface Todo {
   id?: number;
   title: string;
   completed: boolean;
+  userId?: string
 }
 
 @Injectable({
@@ -13,10 +17,12 @@ export interface Todo {
 })
 export class TodoService {
   private resourceUrl = "http://localhost:3000/todos";
+  private userId = null
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   create(todo: Todo): Promise<HttpResponse> {
+    //TODO add user ID
     const options = {
       url: `${this.resourceUrl}`,
       data: todo,
@@ -38,7 +44,7 @@ export class TodoService {
 
   findAll(): Promise<HttpResponse> {
     const options = {
-      url: `${this.resourceUrl}`,
+      url: `${this.resourceUrl}?user=${this.userId}`,
       headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}
     };
 

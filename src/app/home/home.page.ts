@@ -24,7 +24,6 @@ export class HomePage {
       }
     }
     value.completed = false;
-    console.log('Submitted', value);
     this.todoService.create(value).then(() => {
       this.todoService.findAll().then((res) => {
         this.todos$ = res.data;
@@ -36,7 +35,6 @@ export class HomePage {
 
   ngOnInit(): void {
     this.todoService.findAll().then((res) => {
-      console.log(res.data)
       this.todos$ = res.data;
     })
     this.validateForm = this.fb.group({
@@ -47,7 +45,6 @@ export class HomePage {
   update = (todo: Todo) => {
     const updateTodo = Object.assign({}, todo);
     updateTodo.completed = !updateTodo.completed
-    console.log('Todo updated', updateTodo)
     this.todoService.update(updateTodo).then(() => {
       this.todoService.findAll().then((res) => {
         this.todos$ = res.data;
@@ -56,7 +53,6 @@ export class HomePage {
   }
 
   delete = (todo: Todo) => {
-    console.log('Delete', todo);
     if (todo.id != null) {
       this.todoService.delete(todo.id).then(() => {
         this.todoService.findAll().then(res => {
@@ -64,7 +60,6 @@ export class HomePage {
         })
       })
     }
-    console.log('Delete', todo);
   }
 
   refresh(ev: any) {
