@@ -27,7 +27,8 @@ We will use [Android Studio](https://developer.android.com/studio) as build tool
 1. ```ionic config set -g npmClient yarn``` (optional | Switching ionic package manager to yarn)
 2. ```ionic capacitor add android``` (creates /android and builds /www directories)
 3. ```ionic capacitor copy android``` (copies /www/ source into /android)
-4. ```ionic capacitor run android``` (you have to [add a virtual or real device](https://developer.android.com/studio/run/managing-avds) first in android studio)
+4. ```ionic capacitor open android``` (open in android studio)
+5. ```ionic capacitor run android``` (you have to [add a virtual or real device](https://developer.android.com/studio/run/managing-avds) first in android studio)
 
 ## License
 [MIT licensed](LICENSE)
